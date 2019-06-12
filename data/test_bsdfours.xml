@@ -1,0 +1,33 @@
+<!-- This file defines a series of BSDF instances
+	 to be tested for consistency. This is done
+	 using the testcase 'test_chisquare' -->
+<scene version="0.5.0">
+
+	<!-- Test the rough conductor model with the
+		 Beckmann microfacet distribution -->
+	<bsdf type="roughconductorMS">
+		<string name="material" value="none"/>
+		<string name="distribution" value="beckmann"/>
+		<float name="alphaU" value="1.0"/>
+		<float name="alphaV" value="1.0"/>
+		<integer name="scatteringOrderMax" value="10"/>
+		<integer name="scatteringOrderMin" value="0"/>
+	</bsdf>
+
+		<bsdf type="roughconductorMS">
+		<string name="material" value="none"/>
+		<string name="distribution" value="beckmann"/>
+		<float name="alphaU" value="1.0"/>
+		<float name="alphaV" value="1.0"/>
+		<integer name="scatteringOrderMax" value="1"/>
+		<integer name="scatteringOrderMin" value="1"/>
+	</bsdf>
+
+		<bsdf type="roughconductorVgroove">
+		<string name="material" value="none"/>
+		<string name="distribution" value="beckmann"/>
+		<float name="alphaU" value="1.0"/>
+		<float name="alphaV" value="1.0"/>
+	</bsdf>
+
+</scene>

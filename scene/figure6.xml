@@ -1,0 +1,97 @@
+<scene version="0.5.0">
+	<integrator type="path" />
+
+	<shape type="serialized">
+		<string name="filename" value="matpreview.serialized" />
+		<integer name="shapeIndex" value="2" />
+		<transform name="toWorld">
+			<matrix value="0.614046 0.614047 0 -1.78814e-07 -0.614047 0.614046 0 2.08616e-07 0 0 0.868393 1.02569 0 0 0 1" />
+		</transform>
+		<float name="maxSmoothAngle" value="30" />
+
+		<bsdf type="roughconductorMS">
+			<string name="material" value="Al" />
+			<string name="distribution" value="beckmann" />
+			<float name="alphaU" value="0.5" />
+			<float name="alphaV" value="0.5" />
+			<integer name="scatteringOrderMax" value="20" />
+			<integer name="scatteringOrderMin" value="1" />
+		</bsdf>
+	</shape>
+
+	<sensor type="perspective">
+		<float name="focusDistance" value="6.25889" />
+		<float name="fov" value="30" />
+		<string name="fovAxis" value="x" />
+		<transform name="toWorld">
+
+			<lookat origin="2.500000, -5.500000, 2.500000" target="0.000000, 0.000000, 1.000000" up="-0.099712, 0.219367, 0.970534" />
+		</transform>
+
+		<sampler type="ldsampler">
+			<integer name="sampleCount" value="8000" />
+		</sampler>
+
+		<film type="hdrfilm">
+			<boolean name="banner" value="false" />
+			<integer name="height" value="512" />
+			<string name="metadata['blockSize']" value="$scene['blockSize']" />
+			<string name="metadata['coreCount']" value="$scene['coreCount']" />
+			<string name="metadata['memUsage']" value="$scene['memUsage']" />
+			<string name="metadata['renderTime']" value="$scene['renderTime']" />
+			<string name="pixelFormat" value="rgb" />
+			<integer name="width" value="512" />
+
+			<rfilter type="gaussian" />
+		<string name="metadata['blockSize']" value="$scene['blockSize']" /><string name="metadata['coreCount']" value="$scene['coreCount']" /><string name="metadata['memUsage']" value="$scene['memUsage']" /><string name="metadata['renderTime']" value="$scene['renderTime']" /></film>
+	</sensor>
+
+	<emitter id="Area_002-light" type="envmap">
+		<string name="filename" value="envmap.exr" />
+		<transform name="toWorld">
+			<rotate angle="-180" x="0.0" y="1.0" z="0.0" />
+			<matrix value="-0.224951 -0.000001 -0.974370 0.000000 -0.974370 0.000000 0.224951 0.000000 0.000000 1.000000 -0.000001 8.870000 0.000000 0.000000 0.000000 1.000000 " />
+		</transform>
+		<float name="scale" value="3" />
+	</emitter>
+
+	<bsdf id="__diffmat" type="diffuse">
+		<rgb name="reflectance" value="0.18 0.18 0.18" />
+	</bsdf>
+
+	<texture id="__planetex" type="checkerboard">
+		<rgb name="color0" value="0.4" />
+		<rgb name="color1" value="0.2" />
+		<float name="uscale" value="8.0" />
+		<float name="vscale" value="8.0" />
+		<float name="uoffset" value="0.0" />
+		<float name="voffset" value="0.0" />
+	</texture>
+
+	<bsdf id="__planemat" type="diffuse">
+		<ref id="__planetex" name="reflectance" />
+	</bsdf>
+
+	<shape id="Interior-mesh_0" type="serialized">
+		<string name="filename" value="matpreview.serialized" />
+		<integer name="shapeIndex" value="1" />
+		<transform name="toWorld">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0.0252155 0 0 0 1" />
+		</transform>
+
+
+		<ref id="__diffmat" name="bsdf" />
+	</shape>
+
+	<shape id="Plane-mesh_0" type="ply">
+		<string name="filename" value="plane.ply" />
+		<integer name="shapeIndex" value="0" />
+		<transform name="toWorld">
+			<rotate angle="-4.3" x="0.0" y="0.0" z="1.0" />
+			<translate z="-0.03" />
+			<matrix value="3.38818 -4.06354 0 -1.74958 4.06354 3.38818 0 1.43683 0 0 5.29076 -0.0120714 0 0 0 1" />
+		</transform>
+
+		<ref id="__planemat" name="bsdf" />
+	</shape>
+</scene>
